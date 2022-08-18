@@ -1,0 +1,14 @@
+<div class="container mart-50 marb-50 flexbox-center-center">
+    <div class="login flexbox-center-center">
+        <h1>Login</h1>
+        <div class="form-login">
+            <form [formGroup]="loginForm" (ngSubmit)="login()">
+                <input type="text" class="input" placeholder="Email" formControlName="email" />
+                <input type="text" class="input" placeholder="Password" formControlName="password" />
+                <button type="submit" class="btn-social-submit submit">
+                    <span class="fs-16 fw-700">Login</span>
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

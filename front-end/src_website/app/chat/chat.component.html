@@ -1,0 +1,148 @@
+<div class="logined">
+    <div class="flexbox-start-between main">
+        <div class="leftContent relative">
+            <h5 class="name">{{ownUser.name}}</h5>
+            <div *ngIf="!statusFormCreate" class="createGroup" (click)="createGroup()">Create Group Chat</div>
+            <div *ngIf="statusFormCreate">
+                <form [formGroup]="createGroupForm" (ngSubmit)="SubmitCreateGroup()" class="flexbox-center-between">
+                    <div class="textMessage">
+                        <input class="form-control" type="text" formControlName="room" placeholder="Name Of Room" />
+                    </div>
+                    <button class="btn btn-success btn-lg btn-block sendMessage" type="submit">
+                        Create
+                    </button>
+                </form>
+            </div>
+            <div class="eachRoom pointer" *ngFor="let group of chatGroup" (click)="showGroup(group.nameGroup)" [class.active]="active_group && value_active_group == group.nameGroup">
+                {{group.nameGroup}}
+            </div>
+            <!-- <div class="createGroup" (click)="chatWithFriend()">Chat With Friend</div> -->
+            <div class="logOut" (click)="logOut()">Log Out</div>
+        </div>
+
+        <div class="chatForm" *ngIf="statusFormChat == 'group'">
+            <div *ngFor="let group of dataChatingGroup">
+                <div class="header flexbox-center-between">
+                    <div class="user">
+                        Group: {{group.nameGroup}}
+                    </div>
+                    <div class="flexbox-center-center">
+                        <a href="https://videorealtime.herokuapp.com/" target="_blank">
+                            <i class="fas fa-phone-square"></i>
+                        </a>
+                        <a href="https://videorealtime.herokuapp.com/" target="_blank">
+                            <i class="fas fa-video"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="listMessage">
+                    <div class="" *ngFor="let data of group.textGroup">
+                        <div *ngIf="data.nameUser != ownUser.name" class="float-l">
+                            <div class="blackcolor" style="vertical-align: middle;">{{data.nameUser}}</div>
+                            <div class="message">{{data.content}}</div>
+                        </div>
+                        <div class="clear"></div>
+                        <div *ngIf="data.nameUser == ownUser.name" class="float-r">
+                            <div class="blackcolor" style="vertical-align: middle;">{{data.nameUser}}</div>
+                            <div class="userMessage">{{data.content}}</div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+                <span class="marl-20" *ngFor="let avatar of group.listAllPeopleInGroupOnline">
+                    <img class="avatar" src="./../../assets/icon/{{avatar.avatar}}" />
+                </span>
+                <span class="marl-20" *ngFor="let avatar of group.listAllPeopleInGroupOffline">
+                    <img class="avatar" src="./../../assets/icon/{{avatar.avatar}}" />
+                </span>
+                <div class="footer">
+                    <form [formGroup]="chatWithGroupForm" (ngSubmit)="SubmitChatWithGroup()"
+                        class="flexbox-center-between">
+                        <div class="textMessage">
+                            <input class="form-control" type="text" formControlName="textChatWithGroup"
+                                placeholder="Type a message..." />
+                        </div>
+                        <button class="btn btn-success btn-lg btn-block sendMessage" type="submit">
+                            Submit
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="chatForm" *ngIf="statusFormChat == 'friend'">
+            <div *ngFor="let friend of dataChatingFriend">
+                <div class="header flexbox-center-between">
+                    <div class="user">
+                        Friend: {{friend.dataPeople.name}}<img class="image marl-10 marb-10" src="./../../assets/icon/{{friend.dataPeople.avatar}}" />
+                    </div>
+                    <div class="flexbox-center-center">
+                        <a href="https://videorealtime.herokuapp.com/" target="_blank">
+                            <i class="fas fa-phone-square"></i>
+                        </a>
+                        <a href="https://videorealtime.herokuapp.com/" target="_blank">
+                            <i class="fas fa-video"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="listMessage">
+                    <div class="" *ngFor="let data of friend.textPeople">
+                        <!-- <img class="iconUser" src={{avatar}} /> -->
+                        <div *ngIf="data.nameUser != ownUser.name" class="float-l">
+                            <div class="blackcolor" style="vertical-align: middle;">{{data.nameUser}}</div>
+                            <div class="message">{{data.content}}</div>
+                        </div>
+                        <div class="clear"></div>
+                        <div *ngIf="data.nameUser == ownUser.name" class="float-r">
+                            <div class="blackcolor" style="vertical-align: middle;">{{data.nameUser}}</div>
+                            <div class="userMessage">{{data.content}}</div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+                <div class="footer">
+                    <form [formGroup]="chatWithFriendForm" (ngSubmit)="SubmitChatWithFriend()"
+                        class="flexbox-center-between">
+                        <div class="textMessage">
+                            <input class="form-control" type="text" formControlName="textChatWithFriend"
+                                placeholder="Type a message..." />
+                        </div>
+                        <button class="btn btn-success btn-lg btn-block sendMessage" type="submit">
+                            Submit
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="rightContent">
+            <h3>Tất cả thành viên</h3>
+            <div class="flexbox-center-between pointer pad-2" *ngFor="let user of listPeopleOnline"
+                (click)="showFriend(user.name)" [class.active_friend]="active_friend && value_active_friend == user.name">
+                <div class="flexbox-center-start">
+                    <img class="image" src="./../../assets/icon/{{user.avatar}}" /><sup class="color">\</sup>
+                    <div class="online">{{user.name}}</div>
+                </div>
+                <div *ngIf="ownUser.friend.indexOf(user.name)>=0">
+                    <button style="cursor:text" type="button" class="btn btn-success">Friend</button>
+                </div>
+                <div [hidden]="ownUser.friend.indexOf(user.name)>=0">
+                    <button *ngIf="user.name !== ownUser.name" type="button" class="btn btn-warning" (click)="addFriend(user.name)">Add Friend</button>
+                </div>
+            </div>
+            <div class="flexbox-center-between pointer pad-2" *ngFor="let user of listPeopleOffline"
+                (click)="showFriend(user.name)" [class.active_friend]="active_friend && value_active_friend == user.name">
+                <div class="flexbox-center-start">
+                    <img class="image" src="./../../assets/icon/{{user.avatar}}" />
+                    <div class="online">{{user.name}}</div>
+                </div>
+                <div *ngIf="ownUser.friend.indexOf(user.name) >= 0">
+                    <button style="cursor:text" type="button" class="btn btn-success">Friend</button>
+                </div>
+                <div [hidden]="ownUser.friend.indexOf(user.name)>= 0">
+                    <button *ngIf="user.name !== ownUser.name" type="button" class="btn btn-warning" (click)="addFriend(user.name)">Add Friend</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

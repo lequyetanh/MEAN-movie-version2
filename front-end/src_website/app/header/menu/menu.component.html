@@ -1,0 +1,88 @@
+<div class="menu">
+  <nav class="navbar stick navbar-expand-lg fw-600 sticky-top boxshadow-white">
+    <div class="container">
+      <div class="">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto flexbox-center-start">
+            <li class="marr-10 mart-7">
+              <a routerLink="/movie" title="Home">
+                <i class="fa fa-home fs-18"></i>
+              </a>
+            </li>
+            <li class="nav-item dropdown">
+              <div class="nav-link dropdown-toggle whitecolor pointer"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-clone marl-10"></i>
+                CATEGORIES
+              </div>
+              <div class="dropdown-content" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item fs-16" routerLink="/movietype/{{eachCategory.name}}" *ngFor="let eachCategory of Category">
+                  {{eachCategory.name}}
+                </a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <div class="nav-link dropdown-toggle whitecolor pointer"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-globe marl-10"></i>
+                COUNTRY
+              </div>
+              <div class="dropdown-content" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item fs-16" routerLink="/movietype/{{eachCountry.name}}" *ngFor="let eachCountry of Country">
+                  {{eachCountry.name}}
+                </a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <div class="nav-link dropdown-toggle whitecolor pointer"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-film marl-10"></i>
+                PHIM LẺ
+              </div>
+              <div class="dropdown-content" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item fs-16" routerLink="/movietype/phim lẻ/2019">Phim lẻ 2019</a>
+                <a class="dropdown-item fs-16" routerLink="/movietype/phim lẻ/2018">Phim lẻ 2018</a>
+                <a class="dropdown-item fs-16" routerLink="/movietype/phim lẻ/2017">Phim lẻ 2017</a>
+                <a class="dropdown-item fs-16" routerLink="/movietype/phim lẻ/2016">Phim lẻ 2016</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <div class="nav-link dropdown-toggle whitecolor pointer"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-th-list marl-10"></i>
+                PHIM BỘ
+              </div>
+              <div class="dropdown-content" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item fs-16" href="#">Phim bộ 2019</a>
+                <a class="dropdown-item fs-16" href="#">Phim bộ 2018</a>
+                <a class="dropdown-item fs-16" href="#">Phim bộ 2017</a>
+                <a class="dropdown-item fs-16" href="#">Phim bộ 2016</a>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link whitecolor" href="#">
+                <i class="fas fa-paw marl-10"></i>
+                ANIME
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link whitecolor" href="#">
+                <i class="fa fa-bolt marl-10"></i>
+                HOẠT HÌNH
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link whitecolor" href="">
+                <i class="fa fa-tasks marl-10"></i>
+                PHIM CHIẾU RẠP
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link whitecolor" href="">
+                <i class="fa fa-bolt marl-10"></i>
+                TV SHOW
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+</div>
+

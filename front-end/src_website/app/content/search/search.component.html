@@ -1,0 +1,36 @@
+
+
+<div class="relative">
+    <div class="content">
+        <div class="container flexbox-start-center padt-15" style="background-color:rgb(37, 35, 35)">
+            <div class="left-content">
+                <button class="goBack" (click)="goBack()"><i class="fas fa-backward marr-15"></i>Go Back</button>
+
+                <div>
+                    <h4 class="caption flexbox-center-between">
+                        <span><i class="fa fa-plus-square marr-5 fs-19"></i>{{type }}</span>
+                    </h4>
+
+                    <div class="flexbox-center-start">
+                        <div class="movie-item" *ngFor="let eachmovie of listMovie">
+                            <label class="current-status">{{eachmovie.status}}</label>
+                            <a routerLink="/detailmovie/{{eachmovie.id}}" title="{{eachmovie.name}}">
+                                <img alt="{{eachmovie.name}}" src="./../../../assets/image/{{eachmovie.name_image}}.jpg"
+                                    class="movie">
+                            </a>
+                            <span class="title marb-50">
+                                <p class="name">{{eachmovie.name}}</p>
+                                <p class="real-name">{{eachmovie.real_name}} ({{eachmovie.release_year}})</p>
+                                <p class="whitecolor">{{eachmovie.run_time}} Phút</p>
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="right-content marl-30">
+                <app-content></app-content>
+            </div>
+        </div>
+    </div>
+</div>

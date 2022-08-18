@@ -1,0 +1,139 @@
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { AuthService } from "./../../auth.service";
+import { DataService } from "./../../data.service";
+import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { ChatService } from './../../chat.service';
+
+
+@Component({
+    selector: 'app-profile',
+    templateUrl: './profile.component.html',
+    styleUrls: ['./profile.component.scss']
+})
+export class ProfileComponent implements OnInit {
+    user;
+    loggedIn;
+    avatar: any;
+    title = 'fileUpload';
+    images;
+    multipleImages = [];
+    status = false;
+
+    listFriend = [];
+    listGroup = [];
+    constructor(
+        private chatService: ChatService,
+        private authService: AuthService,
+        private dataService: DataService,
+        private router: Router,
+        private http: HttpClient
+    ) {
+        console.log("profile running");
+        this.authService.loggedIn.subscribe(loggedIn => {
+            if (loggedIn == false) {
+                this.router.navigateByUrl('/login');
+            }
+        });
+    }
+
+    ngOnInit() {
+        this.getFavorite();
+    }
+
+    getFavorite() {
+        this.authService.getFavorite().subscribe(favoriteMovie => {
+            this.user = favoriteMovie;
+            this.listFriend = this.user[0].friend;
+            this.listGroup = this.user[0].group;
+            console.log(this.listFriend);
+            this.avatar = this.user[0].avatar;
+            console.log(this.user[0].name);
+        });
+    }
+
+    selectImage(event) {
+        if (event.target.files.length > 0) {
+            const file = event.target.files[0];
+            this.images = file;
+            console.log(this.images);
+            this.avatar = this.images.name;
+            this.status = true;
+        }
+        const formData = new FormData();
+        formData.append('file', this.images);
+
+        this.http.post<any>('http://localhost:4000/api/file', formData).subscribe(
+            (res) => {
+                console.log(res);
+                this.avatar = this.images.name;
+            },
+            (err) => console.log(err)
+        );
+    }
+
+    selectMultipleImage(event) {
+        if (event.target.files.length > 0) {
+            this.multipleImages = event.target.files;
+        }
+    }
+
+    onSubmit() {
+        // thay doi avatar cua user trong database
+        console.log(this.images.name);
+        this.dataService.updateAvatar(this.user[0].id, {
+            avatar: this.images.name
+        }).subscribe(() => {
+            window.location.reload();
+        });
+    }
+
+    onMultipleSubmit() {
+        const formData = new FormData();
+        for (let img of this.multipleImages) {
+            formData.append('files', img);
+        }
+
+        this.http.post<any>('http://localhost:4000/api/multipleFiles', formData).subscribe(
+            (res) => console.log(res),
+            (err) => console.log(err)
+        );
+    }
+
+    unFriend(nameFriend: any) {
+        // console.log(nameFriend);
+        this.user[0].friend.splice(this.user[0].friend.indexOf(nameFriend), 1);
+        // console.log( this.user[0].friend);
+        this.listFriend = this.user[0].friend;
+        this.chatService.unFriend(this.user[0].id, { friend: this.user[0].friend }).subscribe(() => {
+
+        });
+        this.dataService.getUserFromName(nameFriend).subscribe((unFriend) => {
+            // console.log(unFriend[0].friend);
+            unFriend[0].friend.splice(unFriend[0].friend.indexOf(this.user[0].name), 1);
+            // console.log(unFriend[0].friend);
+            this.chatService.unFriend(unFriend[0].id, { friend: unFriend[0].friend }).subscribe(() => {
+
+            });
+        })
+    }
+
+    leaveGroup(nameGroup: any) {
+        console.log(nameGroup);
+        this.user[0].group.splice(this.user[0].group.indexOf(nameGroup), 1);
+        this.listGroup = this.user[0].group;
+        this.chatService.unFriend(this.user[0].id, { group: this.user[0].group }).subscribe(() => {
+
+        });
+        this.chatService.getGroupFromName(nameGroup).subscribe((group) => {
+            console.log(group);
+            group[0].user.splice(group[0].user.indexOf(this.user[0].name), 1);
+            console.log(group[0].user)
+            this.chatService.leaveGroup(group[0].id, { user: group[0].user }).subscribe(() => {
+
+            })
+        })
+    }
+
+}

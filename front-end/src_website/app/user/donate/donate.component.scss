@@ -1,0 +1,96 @@
+// .section {
+//     padding: 3rem 1.5rem;
+// }
+
+// .title.is-2 {
+//     font-size: 2.5rem;
+// }
+
+// .has-text-centered {
+//     text-align: center !important;
+// }
+
+// .columns:not(:last-child) {
+//     margin-bottom: calc(1.5rem - 0.75rem);
+// }
+
+// .donate-form {
+//     margin-top: 2em;
+// }
+
+
+// .donate-form .field {
+//     margin-bottom: 2em;
+// }
+
+// .field:not(:last-child) {
+//     margin-bottom: 0.75rem;
+// }
+
+// .label.is-medium {
+//     font-size: 1.25rem;
+// }
+
+// .label:not(:last-child) {
+//     margin-bottom: 0.5em;
+// }
+
+// .label {
+//     color: #fff;
+//     display: block;
+//     font-size: 1rem;
+//     font-weight: 700;
+// }
+
+// .control {
+//     box-sizing: border-box;
+//     clear: both;
+//     font-size: 1rem;
+//     position: relative;
+//     text-align: left;
+// }
+
+// .columns:last-child {
+//     margin-bottom: -0.75rem;
+// }
+
+h1{
+    color:#c7c7c7;
+}
+
+.has-text-centered {
+    text-align: center !important;
+}
+
+input[type="radio"] {
+    vertical-align: baseline;
+}
+
+label img{
+    width:200px;
+    height:100px;
+}
+
+.select select, .input{
+    width:400px;
+    padding:10px 20px;
+    border-radius:5px;
+    border:none;
+    outline:none;
+}
+
+.button{
+    margin-left:315px;
+    margin-top:20px;
+    padding:10px 20px;
+    border-radius:5px;
+    border:none;
+    outline:none;
+    background-color:#23d300;
+}
+
+.has-text-centered img{
+    width:200px;
+    height:100px;
+    border-radius:50%;
+}

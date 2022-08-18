@@ -1,0 +1,153 @@
+@import url("https://fonts.googleapis.com/css?family=Questrial");
+$fontFamily:"Questrial", sans-serif;
+$black: rgb(0, 0, 0);
+$red: rgb(255, 0, 0);
+$white:rgb(255, 255, 255);
+
+@mixin transition{
+	transition: all ease 0.2s;
+}
+
+*{
+	margin:0;
+	padding:0;
+	box-sizing: border-box;
+}
+
+.frame{
+  width:1300px;
+  height:auto;
+  margin:auto;
+  &.showControls{
+    .controls{
+      bottom:0;
+    }
+  }
+}
+
+.videoPlayer{
+  width:100%;
+  height:auto;
+  position: relative;
+  background-color:$black;
+  video{
+    width:100%;
+  }
+}
+
+.videoPlayer .controls{
+  position:absolute;
+  bottom:0;
+  left:0;
+  right:0;
+  margin:auto;
+  color:$white;
+  .topControls{
+    padding:5px;
+    position: relative;
+  }
+}
+
+.seekbar{
+  height:3px;
+  background-color:rgb(131, 124, 124);
+  flex-basis:90%;
+  .progressBar{
+    height:100%;
+    width:0px;
+    background-color:$red;
+    position: relative;
+    &::after{
+      content:"";
+      position:absolute;
+      right:-5px;
+      border-radius:500px;
+    }
+  }
+  &:hover{
+    cursor:pointer;
+    height:6px;
+    .progressBar{
+      height:6px;
+      &::after{
+        height:15px;
+        width:15px;
+        background-color:$red;
+        margin-top:-4px;
+      }
+    }
+  }
+}
+
+.bottomControls{
+}
+
+.bottomControls .volume{
+  display:inline-flex;
+  align-items:center;
+  flex-basis:30%;
+  // border: 1px solid $white;
+  justify-content: space-between;
+  .seekbarSection{
+    display:inline-flex;
+    flex-direction: column;
+    flex-basis: 80%;
+    .seekbar{
+      height:6px !important;
+      margin-left:5px;
+      flex-basis: 100%;
+      // background-color:#FFFFFF;
+      // border: 1px solid $red;
+      .progressBar{
+        height:6px;
+        width:100%;
+        background-color: $red;
+        position:relative;
+        // margin-top:7px;
+        &::after{
+          content:"";
+          position:absolute;
+          right:-6px;
+          border-radius:500px;
+        }
+      }
+    }
+    &:hover{
+      cursor:pointer;
+      .progressBar{
+        position: relative;
+        height:6px;
+        &::after{
+          height:15px;
+          width:15px;
+          background-color:$red;
+        }
+      }
+    }
+  }
+}
+
+
+.fa{
+  font-size:20px !important;
+}
+
+.fas{
+  font-size:20px !important;
+}
+
+.btn{
+  color:white !important;
+  @include transition();
+  &.play {
+    .fa-pause{
+      display:none;
+    }
+  }
+  &.pause{
+    transform:rotate(180deg);
+    .fa-play{
+      display:none;
+    }
+  }
+}

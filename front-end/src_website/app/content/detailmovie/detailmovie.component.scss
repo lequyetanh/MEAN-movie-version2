@@ -1,0 +1,243 @@
+.poster{
+  position:relative;
+  border:1px solid white;
+}
+
+.right-content {
+    width: 312px;
+}
+
+.left-content {
+    width: 768px;
+}
+
+.image{
+    width:264px;
+    height:344px;
+}
+
+a:hover{
+  opacity:1 !important;
+}
+
+.xemphim{
+  position: absolute;
+  bottom:0;
+  right:0;
+  left:0;
+  height:70px;
+  background-color:rgba(0, 0, 0, 0.219);
+}
+
+.actor{
+  width:400px;
+  white-space:wrap;
+  text-overflow:ellipsis;
+  overflow:hidden;
+}
+
+.genre{
+  width:450px;
+  white-space:nowrap;
+  text-overflow: ellipsis;
+  overflow:hidden;
+}
+
+// .moviename{
+//   width:500px;
+//   white-space:wrap;
+//   text-overflow:ellipsis;
+//   overflow:hidden;
+// }
+
+.button{
+  background-color:#d30700;
+  padding:5px;
+  position:absolute;
+  font-weight:700;
+  text-shadow: rgb(0, 0, 0) -1px -2px 0.5em;
+}
+
+.button:hover{
+  // opacity:0.8;
+  border:1px solid #FFFFFF;
+}
+
+.fa-play-circle-o{
+  font-size:25px !important;
+  color:#FFFFFF;
+}
+
+.name-movie{
+  color:#0094fc;
+  font-weight:700;
+  text-shadow: rgba(0,0,255,1) -1px -2px 0.5em;
+  white-space:wrap;
+  width:450px;
+}
+
+.category{
+  white-space:wrap;
+  width:450px;
+  text-overflow:ellipsis;
+  overflow:hidden;
+}
+
+.status{
+  color:#cac300;
+  font-weight:700;
+}
+
+.info{
+  max-width:100%;
+  max-height:179px;
+  -webkit-overflow-scrolling: touch;
+  overflow: auto;
+}
+
+.movie-info{
+  max-width:300px;
+}
+
+.underline{
+  border-bottom:2px solid #000000;
+}
+
+.rate{
+  color:#fff601;
+  font-size:25px;
+  font-weight:700;
+  padding:10px;
+  background-color:#404040;
+}
+
+p{
+  margin-bottom:0px !important;
+  line-height:23.14px !important;
+}
+
+.caption span{
+  text-transform:uppercase;
+  border-bottom:dashed 2px #000000;
+  text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+}
+
+.caption span{
+  font-size:22px;
+  font-weight:600;
+  color:#73ff00;
+}
+
+.caption a:hover{
+  color:white !important;
+}
+
+.watch_later .fa-user-clock{
+    font-size:20px;
+    margin-right:5px;
+    color:#dfd701;
+    padding:6px;
+    font-weight:bold;
+}
+
+.favorite, .share, .watch_later{
+    font-size:16px;
+    padding:10px;
+    background:#555552;
+}
+
+.favorite .fa-heart{
+    font-size:20px;
+    margin-right:5px;
+    color:#ff0800;
+    padding:6px;
+    font-weight:bold;
+}
+
+.fa-check-circle{
+    font-size:20px;
+    margin-right:5px;
+    color:#1bce00;
+    padding:6px;
+    font-weight:bold;
+}
+
+.share i{
+    font-size:20px;
+    margin-right:5px;
+    color:#0039f5;
+    padding:6px;
+    font-weight:bold;
+}
+
+.share:hover, .favorite:hover, .watch_later:hover{
+    background:#ff7b00ee;
+}
+
+@media only screen and (max-width: 376px) {
+    .left-content{
+        width:100%;
+    }
+    .poster img{
+        width:100% !important;
+        height:auto !important;
+    }
+
+    .underline{
+        display:none;
+    }
+
+    .padl-20{
+        display:none;
+    }
+
+    .right-content {
+        width: 350px;
+    }  
+    
+    .marl-30{
+        margin-left:0 !important;
+    }
+
+    .flexbox-start-start{
+        display:flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+
+    .flexbox-start-start a{
+        display:flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+
+    .image{
+        height:100%;
+        width:100%;
+    }
+
+    .movie-item{
+        width:49%;
+    }
+
+    .container{
+        padding:5px !important;
+    }
+
+    .marb-20{
+        margin-bottom: 20px;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap:wrap !important;
+    }
+
+    .marr-50{
+        margin-right:10px !important;
+    }
+
+    .watch_later, .favorite, .share{
+        padding:5px 5px;
+    }
+
+}

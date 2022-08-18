@@ -1,0 +1,249 @@
+<div class="relative">
+    <div class="">
+        <div class="container flexbox-start-center padt-15" style="background-color:rgb(37, 35, 35)">
+            <div class="left-content" *ngFor="let eachmovie of movie">
+                <div class="pad-5 whitecolor fs-16" style="background-color: rgb(0, 0, 0)">
+                    <a routerLink="#" class="yellowcolor fs-16"> Home </a>/
+                    <a routerLink="#" class="yellowcolor fs-16"> {{eachmovie.category}} </a>/
+                    <a routerLink="#" class="yellowcolor fs-16"> {{eachmovie.real_name}} </a>
+                </div>
+
+                <div class="flexbox-start-start mart-10 marb-10">
+                    <div>
+                        <img class="image marr-15" src="./../../../assets/image/{{ eachmovie.name_image }}.jpg" />
+                    </div>
+                    <div class="">
+                        <div class="">
+                            <h2 class="name-movie">{{ eachmovie.name }}</h2>
+                            <h4 class="whitecolor">{{ eachmovie.real_name }}</h4>
+                        </div>
+                        <div class="content"></div>
+                    </div>
+                </div>
+
+                <div class="frame">
+                    <div class="videoPlayer showControls">
+                        <div class="videoFrame">
+                            <!-- <iframe width="100%" height="400" src="https://www.youtube.com/embed/vi9m0JRo71I" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+                            <!-- <video>
+                                <source src="./../../../assets/play.mp4" type="video/mp4">
+                            </video> -->
+                            <video class="video" src="https://upload.wikimedia.org/wikipedia/commons/transcoded/2/22/Volcano_Lava_Sample.webm/Volcano_Lava_Sample.webm.360p.webm"></video>
+                            <div class="list_speed">
+                                <h5 class="flexbox-center-center padb-10 padt-7 mar-3"
+                                    style="border-bottom: 2px solid #dadada">
+                                    <i class="fas fa-history marr-5"></i>Speed
+                                </h5>
+                                <div class="underline"></div>
+                                <div class="list-speed">
+                                    <h5 class="item-speed">2.0x</h5>
+                                    <h5 class="item-speed">1.5x</h5>
+                                    <h5 class="item-speed">1.0x</h5>
+                                    <h5 class="item-speed">0.5x</h5>
+                                    <h5 class="item-speed">0.25x</h5>
+                                </div>
+                            </div>
+                            <div class="list_subtitle">
+                                <h5 class="flexbox-center-center mar-3 padt-7 padb-10"
+                                    style="border-bottom: 2px solid #dadada">
+                                    <i class="fas fa-closed-captioning marr-5"></i>Subtitle
+                                </h5>
+                                <div class="underline"></div>
+                                <h5 class="item-speed2">English</h5>
+                                <h5 class="item-speed2">VietNam</h5>
+                                <h5 class="item-speed2">None</h5>
+                                <h5 class="item-speed2">Bilingual</h5>
+                            </div>
+                            <div class="list_resolution">
+                                <h5 class="flexbox-center-center mar-3 padt-7 padb-10"
+                                    style="border-bottom: 2px solid #dadada">
+                                    <i class="fas fa-wifi marr-5"></i>Resolution
+                                </h5>
+                                <div class="underline"></div>
+                                <h5 class="item-speed3">
+                                    1080<sup class="redcolor fw-600">HD</sup>
+                                </h5>
+                                <h5 class="item-speed3">
+                                    720<sup class="redcolor fw-600">HD</sup>
+                                </h5>
+                                <h5 class="item-speed3">480</h5>
+                                <h5 class="item-speed3">360</h5>
+                            </div>
+                            <div class="controls active">
+                                <div class="topControls">
+                                    <div class="seekbar">
+                                        <div class="progressBar"></div>
+                                    </div>
+                                </div>
+                                <div class="bottomControls flexbox-center-between">
+                                    <div class="flexbox-center-start" style="width: 55%">
+                                        <div class="playback">
+                                            <div class="bt playPauseBtn marl-7" [class.play]="statusVideo == 'play'" [class.pause]="statusVideo == 'pause'">
+                                                <i class="fa fa-play" matTooltip="Play" (click)="playVideo()"></i>
+                                                <i class="fa fa-pause mart-5" matTooltip="Pause" (click)="pauseVideo()"></i>
+                                            </div>
+                                        </div>
+
+                                        <div class="backward marl-10 pointer">
+                                            <i class="fas fa-undo"></i>
+                                        </div>
+
+                                        <div class="volume marl-10 pointer" matTooltip="Volume">
+                                            <i class="fa fa-volume-up"></i>
+                                            <span class="seekbarSection">
+                                                <span class="seekbar">
+                                                    <div class="progressBar"></div>
+                                                </span>
+                                            </span>
+                                        </div>
+
+                                        <div class="time marl-20" matTooltip="Time">
+                                            <span class="startTime fs-20">--:--</span>
+                                            <span class="marl-5 marr-5 fs-20">/</span>
+                                            <span class="endTime fs-20">--:--</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="flexbox-center-around" style="width: 25%">
+                                        <div class="setting pointer" matTooltip="Setting">
+                                            <i class="fa fa-cog" matBadge="HD" matBadgeColor="warn"></i>
+                                        </div>
+
+                                        <div class="speed fs-20 pointer" matTooltip="Speed">1x</div>
+
+                                        <div class="Subtitle pointer" matTooltip="Subtitle">
+                                            <i class="fas fa-closed-captioning fs-18"></i>
+                                        </div>
+
+                                        <div class="fullscreenCtrl" matTooltip="FullScreen">
+                                            <div class="fullscreen pointer">
+                                                <i class="fas fa-compress"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="boxshadow"></div>
+
+                <div class="mart-20 marb-15 flexbox-center-between">
+                    <div class="">
+                        <button mat-raised-button matTooltip="VietSub"
+                            aria-label="Button that displays a tooltip when focused or hovered over"
+                            class="vietsub marl-10">
+                            <span class="spinner-grow" style="width: 15px; height: 15px" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </span>
+                            VietSub
+                        </button>
+                        <button mat-raised-button matTooltip="Thuyết Minh"
+                            aria-label="Button that displays a tooltip when focused or hovered over"
+                            class="vietsub marl-10" style="border: none !important">
+                            Thuyết Minh
+                        </button>
+                    </div>
+                    <!-- <div class="">
+                    <button mat-raised-button
+                        matTooltip="Light Off"
+                        aria-label="Button that displays a tooltip when focused or hovered over"
+                        class="vietsub marl-10"
+                        style="border:none !important">
+                            <i class="fas fa-lightbulb marr-3" style="color:rgb(214, 218, 0);font-size:14px !important"></i>
+                        Light Off
+                    </button>
+                  </div> -->
+                </div>
+
+                <div class="server flexbox-center-start pad-10 mart-15 marb-15">
+                    <span class="flexbox-center-center whitecolor fs-18 marr-30"><i
+                            class="fas fa-server greencolor marr-3"></i>Server</span>
+                    <button mat-raised-button matTooltip="Server 1"
+                        aria-label="Button that displays a tooltip when focused or hovered over" class="hdd marr-10">
+                        #1 HDD
+                    </button>
+                    <button mat-raised-button matTooltip="Server 2"
+                        aria-label="Button that displays a tooltip when focused or hovered over" class="ssd marr-10">
+                        #2 SHDD
+                    </button>
+                    <button mat-raised-button matTooltip="Server 3"
+                        aria-label="Button that displays a tooltip when focused or hovered over" class="ssd marr-10">
+                        #3 SSD
+                    </button>
+                </div>
+
+                <div class="flexbox-center-between pad-15 mart-10" style="background: rgb(27, 27, 27)">
+                    <div class="fs-18">
+                        <p class="fs-20" style="color: rgb(216, 213, 48)">
+                            Đánh giá phim <span>(5 lượt)</span>
+                        </p>
+                        <i class="fas fa-star" style="color: rgb(218, 131, 0)"></i>
+                        <i class="fas fa-star" style="color: rgb(218, 131, 0)"></i>
+                        <i class="fas fa-star" style="color: rgb(218, 131, 0)"></i>
+                        <i class="fas fa-star" style="color: rgb(218, 131, 0)"></i>
+                        <i class="fas fa-star" style="color: rgb(218, 131, 0)"></i>
+                        <i class="fas fa-star" style="color: rgb(218, 131, 0)"></i>
+                        <i class="fas fa-star" style="color: rgb(206, 204, 201)"></i>
+                        <i class="fas fa-star" style="color: rgb(206, 204, 201)"></i>
+                        <i class="fas fa-star" style="color: rgb(206, 204, 201)"></i>
+                        <i class="fas fa-star" style="color: rgb(206, 204, 201)"></i>
+                    </div>
+                    <div class="">
+                        <div class="flexbox-center-center top pad-5">349</div>
+                        <div class="flexbox-center-center bottom pad-5">
+                            <i class="fab fa-facebook-square marr-3"></i>Shared
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flexbox-center-start">
+                    <div class="whitecolor fs-16 marr-5" style="margin-top: -3px">Search:</div>
+                    <a href="https://bilumoi.com/tag/toi-pham.html" class="flexbox-center-start tag marr-5"
+                        rel="nofollow" title="tội phạm">
+                        <i class="fas fa-caret-left"></i>
+                        <span class="text-tag blackcolor fw-700">Tội Phạm</span>
+                    </a>
+                    <a href="https://bilumoi.com/tag/toi-pham.html" class="flexbox-center-start tag marr-5"
+                        rel="nofollow" title="tội phạm">
+                        <i class="fas fa-caret-left"></i>
+                        <span class="text-tag blackcolor fw-700">Tội Phạm</span>
+                    </a>
+                    <a href="https://bilumoi.com/tag/toi-pham.html" class="flexbox-center-start tag marr-5"
+                        rel="nofollow" title="tội phạm">
+                        <i class="fas fa-caret-left"></i>
+                        <span class="text-tag blackcolor fw-700">Tội Phạm</span>
+                    </a>
+                    <a href="https://bilumoi.com/tag/toi-pham.html" class="flexbox-center-start tag marr-5"
+                        rel="nofollow" title="tội phạm">
+                        <i class="fas fa-caret-left"></i>
+                        <span class="text-tag blackcolor fw-700">Tội Phạm</span>
+                    </a>
+                    <a href="https://bilumoi.com/tag/toi-pham.html" class="flexbox-center-start tag marr-5"
+                        rel="nofollow" title="tội phạm">
+                        <i class="fas fa-caret-left"></i>
+                        <span class="text-tag blackcolor fw-700">Tội Phạm</span>
+                    </a>
+                    <a href="https://bilumoi.com/tag/toi-pham.html" class="flexbox-center-start tag marr-5"
+                        rel="nofollow" title="tội phạm">
+                        <i class="fas fa-caret-left"></i>
+                        <span class="text-tag blackcolor fw-700">Tội Phạm</span>
+                    </a>
+                </div>
+
+                <a routerLink="#" class="flexbox-center-center">
+                    <img style="width: 100%" class="mart-20 marb-20" src="./../../../assets/1224.gif" />
+                </a>
+
+                <div class="fb-comments background mart-10 marb-20" data-href="http://localhost:4200/watchmovie/"
+                    data-width="100%" data-numposts="5"></div>
+
+                <app-samemovie [movie]="movies"></app-samemovie>
+            </div>
+            <div class="right-content marl-30">
+                <app-content></app-content>
+            </div>
+        </div>
+    </div>
+</div>

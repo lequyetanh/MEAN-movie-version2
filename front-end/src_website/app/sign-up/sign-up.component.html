@@ -1,0 +1,24 @@
+<div class="container mart-50 marb-50 flexbox-center-center">
+    <div class="login flexbox-center-center">
+        <h1>Sign Up</h1>
+        <div class="form-login">
+            <form [formGroup]="signupForm" (ngSubmit)="signUp()">
+                <!-- <input type="text" class="input" placeholder="" formControlName="id" /> -->
+                <input type="text" class="input" placeholder="Full Name" formControlName="name" />
+                <!-- <h3>Gender</h3>
+                <input type="radio" id="" formControllName="gender" value="male">
+                <label for="male" class="marr-20">Male</label>  
+                <input type="radio" id="" formControllName="gender" value="female">
+                <label for="female">Female</label><br> -->
+                <input type="email" class="input" placeholder="Email" formControlName="email" />
+                <input type="password" class="input" placeholder="Password" formControlName="password" />
+                <!-- <input type="text" class="input" placeholder="Re-Password" formControlName="re-password" /> -->
+                <!-- <input type="text" class="input" placeholder="" formControlName="watchLater" />
+                <input type="text" class="input" placeholder="" formControlName="favorite" /> -->
+                <button type="submit" class="btn-social-submit submit">
+                    <span class="fs-16 fw-700">Sign Up</span>
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

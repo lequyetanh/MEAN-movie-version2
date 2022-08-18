@@ -1,0 +1,28 @@
+.page-link{
+    background:#111010 !important;
+    border:none !important;
+    border-radius:50%;
+    outline: none !important;
+    cursor:pointer !important;
+}
+
+.page-item.active .page-link {
+    color: rgb(0, 0, 0)!important;
+    background-color: #dfdfdf!important;
+}
+
+.border.disabled{
+    border:1px solid transparent !important;       
+}
+
+.border{
+border:none !important;    
+}
+
+.page-item:first-child .page-link {
+   border-radius:50% !important;
+}
+
+.page-item:last-child .page-link {
+    border-radius:50% !important;
+ }

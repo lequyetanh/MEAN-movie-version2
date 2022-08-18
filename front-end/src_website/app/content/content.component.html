@@ -1,0 +1,86 @@
+<div class="flexbox-center-center">
+    <div class="flexbox-center-center ad">
+        <a routerLink="">
+            <img style="width:100%" src="./../../assets/1228.gif">
+        </a>
+    
+        <a routerLink="">
+            <img style="width:100%" src="./../../assets/1228.gif">
+        </a>
+    </div>
+    <div class="caption mart-20">
+        <span class="fw-700 fs-19" style="color:#73ff00;">Top Movie</span>
+    </div>
+    <div class="">
+        <mat-tab-group>
+            <mat-tab style="width:60px !important;" label="Phim Bộ">
+                <div class="phim">
+                    <a routerLink="/detailmovie/{{eachmovie.id}}" class="list-movie" *ngFor="let eachmovie of moviebo">
+                        <div class="flexbox-center-start item-list-movie" title="Nhất Dạ Tân Nương">
+                            <img class="img-list-movie" src="./../../assets/image/{{eachmovie.name_image}}.jpg">
+                            <div class="marl-5 overflow">
+                                <p class="name">{{eachmovie.name}}</p>
+                                <p class="real-name">{{eachmovie.real_name}}</p>
+                                <div class="whitecolor"><i class="fa fa-eye marl-5 marr-5"></i>{{eachmovie.views}} views
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </mat-tab>
+            <mat-tab label="Phim Lẻ">
+                <div class="phim">
+                    <a routerLink="/detailmovie/{{eachmovie.id}}" class="list-movie" *ngFor="let eachmovie of moviele">
+                        <div class="flexbox-center-start item-list-movie" title="Nhất Dạ Tân Nương">
+                            <img class="img-list-movie" src="./../../assets/image/{{eachmovie.name_image}}.jpg">
+                            <div class="marl-5 overflow">
+                                <p class="name">{{eachmovie.name}}</p>
+                                <p class="real-name">{{eachmovie.real_name}}</p>
+                                <div class="whitecolor"><i class="fa fa-eye marl-5 marr-5"></i>{{eachmovie.views}} views
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+    
+    <div class="caption mart-20">
+        <span class="fw-700 fs-19" style="color:#73ff00">Phim Sắp Chiếu</span>
+    </div>
+    <div class="phim">
+        <a routerLink="/detailmovie/{{eachmovie.id}}" class="list-movie" *ngFor="let eachmovie of moviele">
+            <div class="flexbox-center-start item-list-movie" title="Nhất Dạ Tân Nương">
+                <img class="img-list-movie" src="./../../assets/image/{{eachmovie.name_image}}.jpg">
+                <div class="marl-5 overflow">
+                    <p class="name">{{eachmovie.name}}</p>
+                    <p class="real-name">{{eachmovie.real_name}}</p>
+                    <div class="whitecolor"><i class="fa fa-eye marl-5 marr-5"></i>{{eachmovie.views}} views
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="caption mart-30">
+        <span class="fs-20"><i class="fa fa-tags fs-16 marr-5"></i>Tags:</span>
+    </div>
+    <div class="phim" style="height:200px">
+        <span class="flexbox-center-start padt-1 padl-10" style="background:#141313" *ngFor="let eachmovie of moviele">
+            <a routerLink="https://bilumoi.com/tag/toi-pham.html" class="flexbox-center-start tag marr-5" rel="nofollow"
+                title="{{eachmovie.name}}">
+                <i class="fas fa-caret-left"></i>
+                <span class="text-tag blackcolor fw-700">{{eachmovie.name}}</span>
+            </a>
+            <a routerLink="https://bilumoi.com/tag/toi-pham.html" class="flexbox-center-start tag marr-5" rel="nofollow"
+                title="{{eachmovie.real_name}}">
+                <i class="fas fa-caret-left"></i>
+                <span class="text-tag blackcolor fw-700">{{eachmovie.real_name}}</span>
+            </a>
+        </span>
+    </div>
+    <div class="actor marb-10 mart-20">
+        <div class="fs-20 fw-700">Diễn Viên</div>
+        <img src="./../../assets/image/20160909170353-0909-jason-statham-001.jpg">
+    </div>
+</div>

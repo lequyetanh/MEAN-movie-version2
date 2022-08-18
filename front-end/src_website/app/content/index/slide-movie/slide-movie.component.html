@@ -1,0 +1,92 @@
+<div class="bd-example">
+    <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators flexbox-center-center">
+            <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+            <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+            <li data-target="#carouselExampleCaptions" data-slide-to="3"></li>
+            <li data-target="#carouselExampleCaptions" data-slide-to="4"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="flexbox-center-between">
+                    <div class="width-slide" *ngFor="let eachItem of slide1">
+                        <a routerLink="/detailmovie/{{eachItem.id}}">
+                            <img src="./../../../../assets/image/{{eachItem.name_image}}.jpg" class="d-block w-100"
+                                alt="{{eachItem.name}}">
+                            <div class="infor">
+                                <div class="name">{{eachItem.name}}</div>
+                                <div class="real_name">{{eachItem.real_name}}</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="flexbox-center-between">
+                    <div class="width-slide" *ngFor="let eachItem of slide5">
+                        <a routerLink="/detailmovie/{{eachItem.id}}">
+                            <img src="./../../../../assets/image/{{eachItem.name_image}}.jpg" class="d-block w-100"
+                                alt="{{eachItem.name}}">
+                            <div class="infor">
+                                <div class="name">{{eachItem.name}}</div>
+                                <div class="real_name">{{eachItem.real_name}}</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="flexbox-center-between">
+                    <div class="width-slide" *ngFor="let eachItem of slide3">
+                        <a routerLink="/detailmovie/{{eachItem.id}}">
+                            <img src="./../../../../assets/image/{{eachItem.name_image}}.jpg" class="d-block w-100"
+                                alt="{{eachItem.name}}">
+                            <div class="infor">
+                                <div class="name">{{eachItem.name}}</div>
+                                <div class="real_name">{{eachItem.real_name}}</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="flexbox-center-between">
+                    <div class="width-slide" *ngFor="let eachItem of slide4">
+                        <a routerLink="/detailmovie/{{eachItem.id}}">
+                            <img src="./../../../../assets/image/{{eachItem.name_image}}.jpg" class="d-block w-100"
+                                alt="{{eachItem.name}}">
+                            <div class="infor">
+                                <div class="name">{{eachItem.name}}</div>
+                                <div class="real_name">{{eachItem.real_name}}</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="flexbox-center-between">
+                    <div class="width-slide" *ngFor="let eachItem of slide2">
+                        <a routerLink="/detailmovie/{{eachItem.id}}">
+                            <img src="./../../../../assets/image/{{eachItem.name_image}}.jpg" class="d-block w-100"
+                                alt="{{eachItem.name}}">
+                            <div class="infor">
+                                <div class="name">{{eachItem.name}}</div>
+                                <div class="real_name">{{eachItem.real_name}}</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</div>
+

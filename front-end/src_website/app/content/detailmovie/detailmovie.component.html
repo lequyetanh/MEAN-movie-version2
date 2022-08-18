@@ -1,0 +1,131 @@
+<div class="relative">
+    <div class="content">
+        <div class="container flexbox-start-center padt-15" style="background-color:rgb(37, 35, 35)">
+            <div class="left-content">
+                <div class="flexbox-start-start" *ngFor="let movie of movie">
+                    <a routerLink="/watchmovie/{{ movie.id }}" class="poster">
+                        <img class="image" src="./../../../assets/image/{{ movie.name_image }}.jpg" />
+                        <div class="xemphim flexbox-center-center">
+                            <div class="button flexbox-center-center blackcolor fs-20">
+                                <i class="fa fa-play-circle-o"></i>
+                                Watch Movie
+                            </div>
+                        </div>
+                    </a>
+                    <div class="padl-20 whitecolor">
+                        <h1 class="name-movie moviename">{{ movie.name }}</h1>
+                        <h3 class="fw-700">{{ movie.real_name }}</h3>
+                        <div class="info">
+                            <p class="fs-16 fw-700">
+                                Current Status:
+                                <strong class="status">{{ movie.status }}</strong>
+                            </p>
+                            <p class="fs-16 fw-700">
+                                Director:
+                                <a href="#" class="" style="color: #729dc7 !important;">{{
+                                    movie.director
+                                }}</a>
+                            </p>
+                            <p class="fs-16 actor fw-700">
+                                Actor:
+                                <a href="#" class="" style="color: #729dc7 !important;">{{
+                                    movie.actor
+                                }}</a>
+                            </p>
+                            <p class="fs-16 fw-700 genre">
+                                Category:
+                                <a class="" href="" style="color: #729dc7 !important;">{{
+                                    movie.genre
+                                }}</a>
+                            </p>
+                            <p class="fs-16 fw-700">
+                                Country:
+                                <a class="" href="" style="color: #729dc7 !important;">{{
+                                    movie.country
+                                }}</a>
+                            </p>
+                            <p class="fs-16 fw-700">
+                                Time: <strong class="status">{{ movie.run_time }} phút</strong>
+                            </p>
+                            <p class="fs-16 fw-700">
+                                Views: <strong class="status">{{ movie.views }}</strong>
+                            </p>
+                            <p class="fs-16 fw-700">
+                                Release_year:
+                                <a class="status" href="" style="color: #729dc7 !important;">{{
+                                    movie.release_year
+                                }}</a>
+                            </p>
+                        </div>
+                        <div class="underline mart-13 marb-13 boxshadow-white"></div>
+                        <div class="flexbox-center-start">
+                            <span class="rate">{{ movie.rate }}</span>
+                            <div class="marl-15">
+                                <div class="">
+                                    <i class="fas fa-star" style="color: rgb(218, 131, 0);"></i>
+                                    <i class="fas fa-star" style="color: rgb(218, 131, 0);"></i>
+                                    <i class="fas fa-star" style="color: rgb(218, 131, 0);"></i>
+                                    <i class="fas fa-star" style="color: rgb(218, 131, 0);"></i>
+                                    <i class="fas fa-star" style="color: rgb(218, 131, 0);"></i>
+                                    <i class="fas fa-star" style="color: rgb(218, 131, 0);"></i>
+                                    <i class="fas fa-star" style="color: rgb(206, 204, 201);"></i>
+                                    <i class="fas fa-star" style="color: rgb(206, 204, 201);"></i>
+                                    <i class="fas fa-star" style="color: rgb(206, 204, 201);"></i>
+                                    <i class="fas fa-star" style="color: rgb(206, 204, 201);"></i>
+                                </div>
+                                <div class="fa fa-bar-chart mart-15">20 lượt đánh giá</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mart-20 marb-20" *ngFor="let movie of movie">
+                    <span class="pointer watch_later marr-50" (click)="pushWatchLater(movie.id)" *ngIf="!watchLater"
+                        title="Thêm vào xem sau"><i class="fas fa-user-clock"></i>Watch Later</span>
+                    <span class="pointer watch_later marr-50" (click)="removeWatchLater(movie.id)" *ngIf="watchLater"
+                        title="Thêm vào xem sau"><i class="fas fa-user-clock"></i>Watch
+                        Later<sup><i class="far fa-check-circle"></i></sup></span>
+                    <span class="pointer favorite marr-50" (click)="pushFavorite(movie.id)" *ngIf="!favorite"
+                        title="Xóa từ danh sách yêu thích"><i class="far fa-heart"></i>Favorite</span>
+                    <span class="pointer favorite marr-50" (click)="removeFavorite(movie.id)" *ngIf="favorite"
+                        title="Xóa từ danh sách yêu thích"><i class="far fa-heart"></i>Favorite<sup><i
+                                class="far fa-check-circle"></i></sup></span>
+                    <span class="pointer share"><i class="fas fa-share-alt"></i>Share</span>
+                </div>
+                <h3>Diễn Viên</h3>
+
+                <app-slide-actor></app-slide-actor>
+
+                <div class="" *ngFor="let movie of movie">
+                    <h4 class="caption mart-15">
+                        <span><i class="fa fa-plus-square marr-5 fs-19"></i>movie's content</span>
+                    </h4>
+                    <p class="fs-16" style="color: rgb(207, 207, 207);">
+                        {{ movie.content }}
+                    </p>
+                    <div class="flexbox-start-center">
+                        <img class="mart-20 marb-20" style="width: 95%;"
+                            src="./../../../assets/image/{{ movie.vice_name_image }}.jpg" />
+                    </div>
+                </div>
+
+                <div class="">
+                    <app-samemovie [movie]="movies"></app-samemovie>
+                </div>
+
+            </div>
+            <div class="right-content marl-30">
+                <app-content></app-content>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="adver1">
+    <a routerLink="#">
+      <img src="./../../assets/1145.gif">
+    </a>
+  </div>
+  <div class="adver2">
+    <a routerLink="#">
+      <img src="./../../assets/1222.gif">
+    </a>
+  </div> -->
+</div>

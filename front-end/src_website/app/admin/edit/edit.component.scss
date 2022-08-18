@@ -1,0 +1,75 @@
+.card-body{
+    border:1px solid #cec21d;
+    background:#2a2a2b;
+    width:90%;
+    color:#d8d7c6;
+    margin:0 auto;
+    padding:30px;
+}
+
+h1, h2, h3{
+    text-align:center;
+    margin-bottom:30px;
+    color:#cec21d;
+}
+
+form{
+    width:100%;
+}
+
+.form-group{
+    width:47% !important;
+}
+
+input{
+    width:100%;
+    padding:20px;
+}
+
+.tagForm{
+    border:1px solid #d8d7c6;
+    padding:10px;
+}
+
+.add{
+    width:23%;
+}
+
+.fas{
+    font-size:30px;
+    cursor: pointer;
+}
+
+.fa-plus{
+    color:#09b800;
+}
+
+.fa-trash-alt{
+    color:#eb4605;
+}
+
+.countryForm, .genreForm{
+    border:1px solid #d8d7c6;
+    padding:20px;
+}
+
+.eachCountry{
+    width:35%;
+}
+
+.eachCountry label, .eachgenre label{
+    font-size:22px;
+}
+
+.eachCountry input, .eachgenre input{
+   width:30px;
+   height:30px;
+}
+
+.eachgenre{
+    width:48%;
+}
+
+button{
+    padding:20px 40px;
+}

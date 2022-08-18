@@ -1,0 +1,111 @@
+<div class="" *ngIf="!moviebo">
+    <div class="flexbox-center-center">
+        <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+</div>
+<div class="" *ngIf="moviebo">
+    <div class="relative">
+        <div class="container mart-5 marb-10 pad-0">
+            <!-- <a routerLink="#" class="">
+          <img style="width:100%" src="./../../assets/1224.gif">
+        </a> -->
+            <a routerLink="#" class="">
+                <img class="ad1" src="./../../assets/1187.gif">
+            </a>
+            <a routerLink="#" class="">
+                <img class="ad2" src="./../../assets/1204.gif">
+            </a>
+        </div>
+        <div class="content">
+            <div class="container flexbox-start-center padt-15" style="background-color:rgb(37, 35, 35)">
+                <div class="left-content">
+                    <app-slide-movie></app-slide-movie>
+                    <!-- <div class="">
+                        {{todaydate | date:'d/M/y'}}
+                    </div>
+                    <div class="">
+                        {{todaydate}}
+                    </div>
+                    <h1>Currency Pipe</h1>
+                        <b> {{658923 | currency:"VND"}}</b><br/>
+                        <b> {{658923 | currency:"VND":true}}</b>
+                        <h1>Date pipe</h1>
+                        <b>{{todaydate | date:'d/M/y'}}</b><br/>
+                        <b>{{todaydate | date:'shortTime'}}</b>
+                        <h1>Decimal Pipe</h1>
+                        <b>{{ 454.78787814 | number: '3.4-4' }}</b> -->
+                    <button class="btn-danger btn-lg btn-block mart-20 marb-20" routerLink="/filter">Filter</button>
+                    <h4 class="caption flexbox-center-between">
+                        <span><i class="fa fa-plus-square marr-5 fs-19"></i>phim bộ cập nhật</span>
+                        <a class=""
+                            style="color:#73ff00;text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;"
+                            title="Phim bộ mới cập nhật" routerLink="/movietype/phim bộ">Xem tất cả
+                            <i class="fa fa-angle-double-right"></i>
+                        </a>
+                    </h4>
+                    <div class="flexbox-center-between">
+                        <div class="movie-item" *ngFor="let eachmovie of moviebo">
+                            <i class="fa fa-play play-center" matTooltip="Play"></i>
+                            <label class="current-status">{{eachmovie.status}}</label>
+                            <a routerLink="/detailmovie/{{eachmovie.id}}" title="{{eachmovie.name}}" class="play">
+                                <img alt="{{eachmovie.name}}" src="./../../../assets/image/{{eachmovie.name_image}}.jpg"
+                                    class="movie">
+                            </a>
+                            <div class="title">
+                                <p class="name">{{eachmovie.name}}</p>
+                                <p class="real-name">{{eachmovie.real_name}}</p>
+                                <p class="whitecolor">{{eachmovie.run_time}} Phút / Tập</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a routerLink="#" class="flexbox-center-center">
+                        <img style="width:100%" class="mart-20 marb-20" src="./../../../assets/1224.gif">
+                    </a>
+
+                    <h4 class="caption flexbox-center-between">
+                        <span><i class="fa fa-plus-square marr-5 fs-19"></i>phim lẻ cập nhật</span>
+                        <a class=""
+                            style="color:#73ff00;text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;"
+                            title="Phim bộ mới cập nhật" routerLink="/movietype/phim lẻ">Xem tất cả
+                            <i class="fa fa-angle-double-right"></i>
+                        </a>
+                    </h4>
+
+                    <div class="flexbox-center-between">
+                        <div class="movie-item" *ngFor="let eachmovie of moviele">
+                            <label class="current-status">{{eachmovie.status}}</label>
+                            <a routerLink="/detailmovie/{{eachmovie.id}}" title="{{eachmovie.name}}">
+                                <img alt="{{eachmovie.name}}" src="./../../../assets/image/{{eachmovie.name_image}}.jpg"
+                                    class="movie">
+                            </a>
+                            <div class="title">
+                                <p class="name">{{eachmovie.name}}</p>
+                                <p class="real-name">{{eachmovie.real_name}}</p>
+                                <p class="whitecolor">{{eachmovie.run_time}} Phút</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="right-content marl-30">
+                    <app-content></app-content>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="adver1">
+        <a routerLink="#">
+          <img src="./../../assets/1145.gif">
+        </a>
+      </div>
+      <div class="adver2">
+        <a routerLink="#">
+          <img src="./../../assets/1222.gif">
+        </a>
+      </div> -->
+    </div>
+</div>
+<div class="messenger" (click)="toggleForm()" id="bt">
+    <i class="fab fa-facebook-messenger" title="Would you like some help? Please contact me :))"></i>
+</div>

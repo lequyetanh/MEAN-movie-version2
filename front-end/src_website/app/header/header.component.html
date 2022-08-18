@@ -1,0 +1,85 @@
+<div class="header navbar-container" [class.example-is-mobile]="mobileQuery.matches">
+
+    <!-- Top navbar -->
+    <mat-toolbar class="container flexbox-center-between" color="primary">
+
+        <span class="mobile-view pointer" (click)="snav.toggle()">
+            <i class="fas fa-bars"></i>
+        </span>
+
+        <div class="">
+            <a routerLink="/" title="Home">
+                <img class="imageLogo" src="./../../assets/logo.png"
+                    alt="BiluTV - Xem Phim Mới, Phim VietSub, Phim Chiếu Rạp Hay HD" />
+            </a>
+        </div>
+        <!-- search -->
+        <div class="looking-for">
+            <div class="">
+                <input class="form-search" type="search" placeholder="Write the name of movie, actor..."
+                    aria-label="Search" autocomplete="false" [(ngModel)]="movieName"
+                    (keyup.enter)="onKeypressEvent(movieName)" (keyup)="onKey(movieName)" (click)="clickMe()"/>
+                <a routerLink="/search/{{ movieName }}" title="search" (click)="close()">
+                    <i class="fa fa-search"></i>
+                </a>
+            </div>
+            <div class="form-movie" *ngIf="toggle" (click)="close()">
+                <div class="marb-5" *ngFor="let movie of listMovie">
+                    <a class="flexbox-center-center pointer each-movie pad-10" routerLink="/detailmovie/{{movie.id}}">
+                        <div class="left flexbox-center-center float-l">
+                            <img class="img-movie" src="./../../assets/image/{{movie.vice_name_image}}.jpg">
+                        </div>
+                        <div class="right">
+                            <p class="name">{{movie.name}}</p>
+                            <p class="real-name">{{movie.real_name}} ({{movie.release_year}})</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="loggedIn" class="marl-5 pointer logined" title="">
+            <div class="background">
+                <span class="userName">{{ userName }}</span>
+                <i *ngIf="!avatar" class="fas fa-user-circle marl-10 photo" style="font-size:40px !important"></i>
+                <span *ngIf="avatar">
+                    <img class="photo marl-10" width="40px" height="40px" src="./../../assets/icon/{{avatar}}" />
+                </span>
+            </div>
+            <div class="account mart-5">
+                <div class="flexbox-center-start">
+                    <a class="profile" routerLink="/profile">
+                        <i class="fas fa-user-circle"></i>Proflie
+                    </a>
+                    <a class="collection" routerLink="/collection">
+                        <i class="fas fa-bars"></i>Collection
+                    </a>
+                    <a class="donate" routerLink="/donate">
+                        <i class="fas fa-donate"></i>Donate
+                    </a>
+                    <a class="logout" (click)="doLogout()">
+                        <i class="fas fa-sign-out-alt"></i>Logout
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <a [hidden]="userName" [hidden]="loggedIn" class="signIn marl-5" routerLink="/login" title="login">
+            <span>Login</span>
+        </a>
+
+    </mat-toolbar>
+
+    <mat-sidenav-container class="navbar-sidenav-container">
+        <!-- Side nav -->
+        <mat-sidenav #snav [opened]="!mobileQuery.matches" [mode]="mobileQuery.matches ? 'over' : 'side'"
+            [fixedInViewport]="mobileQuery.matches" fixedTopGap="56" class="sidenav">
+
+            <app-sidenav></app-sidenav>
+
+        </mat-sidenav>
+    </mat-sidenav-container>
+</div>
+<app-menu></app-menu>
+
+<!-- ham blur chỉ áp dụng cho thẻ input -->

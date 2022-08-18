@@ -1,0 +1,130 @@
+<div *ngIf="statusAccess">
+    <div class="containe whitecolor box">
+        <mat-tab-group animationDuration="0ms">
+            <mat-tab label="Movie">
+                <div class="number flexbox-center-start">
+                    <div style="width:180px">Picture</div>
+                    <div style="width:200px">Name</div>
+                    <div style="width:200px">Real_Name</div>
+                    <div style="width:80px">Category</div>
+                    <div style="width:80px">Run_time</div>
+                    <div style="width:80px">Rate</div>
+                    <div style="width:230px">Genre</div>
+                    <div style="width:80px">Country</div>
+                    <div style="width:80px">Episode</div>
+                    <div style="width:100px">Views</div>
+                    <div class="" style="width:170px;border:none">
+                        <button type="button" class="btn btn-success" routerLink="/create">Create</button>
+                    </div>
+                </div>
+                <div class="number1 flexbox-center-start" *ngFor="let eachCatalog of pagedItems">
+                    <div style="width:180px" class="whitecolor">
+                        <img class="picture" src="./../../assets/image/{{eachCatalog.name_image}}.jpg">
+                    </div>
+                    <div style="width:200px" class="whitecolor">{{eachCatalog.name}}</div>
+                    <div style="width:200px" class="whitecolor">{{eachCatalog.real_name}}</div>
+                    <div style="width:80px" class="whitecolor">{{eachCatalog.category}}</div>
+                    <div style="width:80px" class="whitecolor">{{eachCatalog.run_time}}</div>
+                    <div style="width:80px" class="whitecolor">{{eachCatalog.rate}}</div>
+                    <div style="width:230px" class="whitecolor pad-10">{{eachCatalog.genre}}</div>
+                    <div style="width:80px" class="whitecolor">{{eachCatalog.country}}</div>
+                    <div style="width:80px" class="whitecolor">{{eachCatalog.episode}}</div>
+                    <div style="width:100px" class="whitecolor">{{eachCatalog.views}}</div>
+                    <div style="width:188px" class="">
+                        <button type="button" class="btn btn-warning marr-5"
+                            routerLink="/edit/{{eachCatalog.id}}">Edit</button>
+                        <button type="button" class="btn btn-danger" (click)="delete(eachCatalog._id)">Delete</button>
+                    </div>
+                </div>
+                <div class="flexbox-center-end">
+                    <div class="mart-30">
+                        <div class="whitecolor">
+                            <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+                                <!-- <li class="border page-item" [ngClass]="{disabled:pager.currentPage === 1}">
+                                <a class="page-link" (click)="setPage(1)">First</a>
+                            </li> -->
+                                <li class="border page-item" [ngClass]="{disabled:pager.currentPage === 1}">
+                                    <a class="page-link" (click)="setPage(pager.currentPage - 1)">
+                                        <i class="fas fa-step-backward"></i>
+                                    </a>
+                                </li>
+                                <li class="border page-item" *ngFor="let page of pager.pages"
+                                    [ngClass]="{active:pager.currentPage === page}">
+                                    <a class="page-link" (click)="setPage(page)">{{page}}</a>
+                                </li>
+                                <li class="border page-item" [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                                    <a class="page-link" (click)="setPage(pager.currentPage + 1)">
+                                        <i class="fas fa-step-forward"></i>
+                                    </a>
+                                </li>
+                                <!-- <li class="border page-item" [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                                <a class="page-link" (click)="setPage(pager.totalPages)">Last</a>
+                            </li> -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </mat-tab>
+            <mat-tab label="User">
+                <div class="number flexbox-center-start">
+                    <div style="width:50px">Id</div>
+                    <div style="width:180px">Avatar</div>
+                    <div style="width:150px">Name</div>
+                    <div style="width:200px">Email</div>
+                    <div style="width:100px">Password</div>
+                    <div style="width:300px">Group In</div>
+                    <div style="width:300px">Friend</div>
+                    <div class="" style="width:170px;border:none">
+                        Delete
+                    </div>
+                </div>
+                <div class="number1 flexbox-center-start" *ngFor="let user of allUser">
+                    <div style="width:50px" class="whitecolor">{{user.id}}</div>
+                    <div style="width:180px">
+                        <img width="100" height="100" src="./../../assets/icon/{{user.avatar}}" />
+                    </div>
+                    <div style="width:150px" class="whitecolor">{{user.name}}</div>
+                    <div style="width:200px" class="whitecolor">{{user.email}}</div>
+                    <div style="width:100px" class="whitecolor">{{user.password}}</div>
+                    <div style="width:300px" class="whitecolor pad-10">{{user.group}}</div>
+                    <div style="width:300px" class="whitecolor pad-10">
+                        {{user.friend}}
+                    </div>
+                    <div style="width:218px" class="">
+                        <button type="button" class="btn btn-danger" (click)="deleteUser(user.id)">Delete</button>
+                    </div>
+                </div>
+            </mat-tab>
+            <mat-tab label="Category" class="">
+                <div class="number genre flexbox-center-start">
+                    <div style="width:280px">Category</div>
+                    <div class="" style="width:170px;border:none">
+                        <button type="button" class="btn btn-success" routerLink="/create">Create</button>
+                    </div>
+                </div>
+                <div class="number1 genre flexbox-center-start" *ngFor="let genre of genre">
+                    <div style="width:280px" class="whitecolor">{{genre.name}}</div>
+                    <div style="width:218px" class="">
+                        <button type="button" class="btn btn-warning marr-5" routerLink="/edit/{{genre.id}}">Edit</button>
+                        <button type="button" class="btn btn-danger" (click)="delete(genre._id)">Delete</button>
+                    </div>
+                </div>
+            </mat-tab>
+            <mat-tab label="Country">
+                <div class="number genre flexbox-center-start">
+                    <div style="width:280px">Country</div>
+                    <div class="" style="width:170px;border:none">
+                        <button type="button" class="btn btn-success" routerLink="/create">Create</button>
+                    </div>
+                </div>
+                <div class="number1 genre flexbox-center-start" *ngFor="let country of country">
+                    <div style="width:280px" class="whitecolor">{{country.name}}</div>
+                    <div style="width:218px" class="">
+                        <button type="button" class="btn btn-warning marr-5" routerLink="/edit/{{country.id}}">Edit</button>
+                        <button type="button" class="btn btn-danger" (click)="delete(country._id)">Delete</button>
+                    </div>
+                </div>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+</div>

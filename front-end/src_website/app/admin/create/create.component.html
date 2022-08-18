@@ -1,0 +1,140 @@
+
+<div class="mart-50 marb-50">
+    <div class="card-body">
+        <h1>Create Movie</h1>
+        <form [formGroup]="movieForm" (ngSubmit)="onSubmit()" class="flexbox-center-around">
+            <div class="form-group">
+                <label for="inputId">Id</label>
+                <input class="form-control" type="number" formControlName="id" />
+            </div>
+
+            <div class="form-group">
+                <label for="inputName">Name</label>
+                <input class="form-control" type="text" formControlName="name" />
+            </div>
+
+            <div class="form-group">
+                <label for="inputRelease_year">Release_year</label>
+                <input class="form-control" type="number" formControlName="release_year" />
+            </div>
+
+            <div class="form-group">
+                <label for="inputRun_time">Run_time</label>
+                <input class="form-control" type="number" formControlName="run_time" />
+            </div>
+
+            <div class="form-group">
+                <label for="inputRate">Rate</label>
+                <input class="form-control" type="number" formControlName="rate" />
+            </div>
+
+            <div class="form-group">
+                <label for="inputName_image">Name_image</label>
+                <input class="form-control" type="text" formControlName="name_image" />
+            </div>
+
+            <div class="form-group">
+                <label for="inputVice_name_image">Vice_name_image</label>
+                <input class="form-control" type="text" formControlName="vice_name_image" />
+            </div>
+
+            <div class="form-group">
+                <label for="inputReal_name">Real_name</label>
+                <input class="form-control" type="text" formControlName="real_name" />
+            </div>
+
+            <div class="form-group">
+                <label for="inputStatus">Status</label>
+                <input class="form-control" type="text" formControlName="status" />
+            </div>
+
+            <div class="form-group">
+                <label for="inputDirector">Director</label>
+                <input class="form-control" type="text" formControlName="director" />
+            </div>
+
+            <div class="form-group">
+                <label for="inputEpisode">Episode</label>
+                <input class="form-control" type="number" formControlName="episode" />
+            </div>
+
+            <div class="form-group">
+                <label for="inputViews">Views</label>
+                <input class="form-control" type="number" formControlName="views" />
+            </div>
+
+            <div class="form-group">
+                <label for="inputActor">Actor</label>
+                <input class="form-control" type="text" formControlName="actor" />
+            </div>
+
+            <div class="form-group">
+                <label for="inputcategory">category</label>
+                <select class="custom-select form-control" (change)="updateCategory($event.target.value)"
+                    formControlName="category">
+                    <!-- <option value="">Choose Month</option> -->
+                    <option *ngFor="let category of category" value="{{category}}">
+                        {{category}}
+                    </option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="inputName_video">Name_video</label>
+                <input class="form-control" type="text" formControlName="name_video" />
+            </div>
+
+            <div class="form-group">
+                <label for="inputTheater">Theater</label>
+                <input class="form-control" type="text" formControlName="theater" />
+            </div>
+
+            <div class="form-group">
+                <label for="inputContent">Content</label>
+                <textarea class="form-control" type="textarea" formControlName="content" rows="10"
+                    cols="100"></textarea>
+            </div>
+
+            <div class="form-group tagForm" formArrayName="tags">
+                <i class="fas fa-plus" (click)="addTag()"></i>
+                <div class="flexbox-center-center">
+                    <div class="mar-5 add" *ngFor="let group of tagArray.controls; let i = index;" [formGroupName]="i">
+                        <div class="icon">
+                            <i class="fas fa-trash-alt" (click)="removeTag(i)"></i>
+                        </div>
+                        <div class="">
+                            <label for="inputTags">Tags</label>
+                            <input class="form-control" type="text" formControlName="tags" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group countryForm">
+                <h3>Country</h3>
+                <div class="flexbox-center-between">
+                    <div class="eachCountry flexbox-center-between" *ngFor="let control of countryArray.controls; let i = index;">
+                        <label class="form-check-label" for="inlineCheckbox{{i}}">{{country[i]}}</label>
+                        <input [formControl]="control" type="checkbox" class="pointer" (change)="getSelectedCountry()" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group genreForm">
+                <h3>genre</h3>
+                <div class="flexbox-center-between">
+                    <div class="eachgenre flexbox-center-between" *ngFor="let control of genreArray.controls; let i = index;">
+                        <label class="form-check-label" for="inlineCheckbox{{i}}">{{genre[i]}}</label>
+                        <input [formControl]="control" type="checkbox"  class="pointer" (change)="getSelectedgenre()"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <button class="btn btn-success btn-lg btn-block" type="submit">
+                    Create
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
